@@ -1,1 +1,4 @@
+# ignore files
+.idea
+
 # ignore the api keys
