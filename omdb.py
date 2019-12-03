@@ -21,7 +21,8 @@ import api_key
 omdb_api_key = api_key.omdb_api
 
 # return a dictionary with movie info data from the API call
-def getMovieInfo(t='The Lion King'):
+movie_title = 'The Lion King'
+def getMovieInfo(t=movie_title):
     base_url = 'http://www.omdbapi.com/'
     api_key = omdb_api_key
     api_key_str = '?apikey=' + api_key
@@ -39,7 +40,7 @@ def getMovieInfo(t='The Lion King'):
 
 print(pretty(getMovieInfo()))  # printing out the dictionary
 
-def basic_movieinfo(t='The Lion King'):
+def basic_movieinfo(t=movie_title):
     movieinfo = getMovieInfo(t=t)
     print('About "%s"'%t)
     print('Released Year: %s' % movieinfo['Year'])
@@ -50,7 +51,7 @@ def basic_movieinfo(t='The Lion King'):
     print("imdbVotes: %s" % movieinfo['imdbVotes'])
 
 
-def get_rating(t='The Lion King', rating_source='Internet Movie Database'):
+def get_rating(t=movie_title, rating_source='Internet Movie Database'):
     movieinfo = getMovieInfo(t=t)
     ratings = movieinfo['Ratings']
     for rating in ratings:
