@@ -40,6 +40,24 @@ def getMovieInfo(t=movie_title):
 
 print(pretty(getMovieInfo()))  # printing out the dictionary
 
+class Movie():
+    def __init__(self, movie_dict):
+        self.title = movie_dict['Title']
+        self.year = movie_dict['Year']
+        self.rated = movie_dict['Rated']
+        self.released = movie_dict['Released']
+        self.runtime = movie_dict['Director']
+        self.writer = movie_dict['Writer']
+        self.actors = movie_dict['Actors']
+        self.plot = movie_dict['Plot']
+        self.poster = movie_dict['Poster']
+        self.metascore = movie_dict['Metascore']
+        self.imdb_rating = movie_dict['imdbRating']
+        self.imdb_votes = movie_dict['imdbVotes']
+        self.imdbID = movie_dict['imdbID']
+        self.box_office = movie_dict['BoxOffice']
+        self.website = movie_dict['Website']
+
 def basic_movieinfo(t=movie_title):
     movieinfo = getMovieInfo(t=t)
     print('About "%s"'%t)
