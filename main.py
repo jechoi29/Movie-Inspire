@@ -84,7 +84,8 @@ class MainHandler(webapp2.RequestHandler):
         JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),extensions=['jinja2.ext.autoescape'],autoescape=True)
         vals = {}
         movie = Movie(getMovieInfo(t="The Lion King"))
-        vals = {"poster":movie.poster, "title":movie.title}
+        # vals = {"poster":movie.poster, "title":movie.title}
+        vals["movies"] = [Movie(getMovieInfo(t="The Lion King")), Movie(getMovieInfo(t="Frozen"))]
         template = JINJA_ENVIRONMENT.get_template('outputpage.html')
         self.response.write(template.render(vals))
         # template = JINJA_ENVIRONMENT.get_template('landingpage.html')

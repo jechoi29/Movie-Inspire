@@ -1,8 +1,63 @@
+
+
+<!--<html>-->
+<!--<head>-->
+<!--	<title>Movie Inspire!</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--	<table>-->
+<!--    {% for movie in movies %}-->
+<!--		<tr>-->
+<!--			<th>-->
+<!--				-->
+<!--				<img src="{{movie.poster}}" alt="{{movie.title}}"/>-->
+<!--				-->
+<!--			</th>-->
+<!--		</tr>-->
+<!--	{% endfor %}-->
+<!--	</table>-->
+<!--</body>-->
+<!--</html>-->
+
 <html>
-<head><title>Movie Inspire!</title></head>
+<head>
+	<title>Movie Inspire!</title>
+	<style>
+        .title{grid-area: topp;}
+        .info{grid-area: middlee;}
+        .description{grid-area: bottomm;}
+
+        .grid-container {
+            display: grid;
+            grid-template-areas:
+                'topp'
+				'middlee'
+				'bottomm'
+        }
+
+        .grid-container > div {
+            font-size: 12px;
+			align-content: flex-start;
+        }
+    </style>
+</head>
 <body>
-	<h1>Recommended Movies</h1>
-	<h2>Top Images Viewed</h2>
-    <img src="{{poster}}" alt="{{title}}"/>
+	<table>
+    {% for movie in movies %}
+		<tr>
+			<th>
+				<img src="{{movie.poster}}" alt="{{movie.title}}"/>
+			</th>
+			<th>
+				<div class="grid-container">
+					<div class="topp"><h1>{{movie.title}}</h1></div>
+					<div class="middlee"><h1>{{movie.year}}</h1></div>
+					<div class="bottomm"><h1>{{movie.plot}}</h1></div>
+				</div>
+			</th>
+		</tr>
+	{% endfor %}
+	</table>
 </body>
 </html>
+
