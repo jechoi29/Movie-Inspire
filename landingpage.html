@@ -1,10 +1,48 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Moive Inspire Homepage</title>
+    <style>
+        .item2{grid-area: leftC;}
+        .item3{grid-area: middleC;}
+        .item4{grid-area: rightC;}
+
+        .grid-container {
+            display: grid;
+            grid-template-areas:
+                'leftC middleC rightC'
+        }
+
+        .grid-container > div {
+            font-size: 20px;
+        }
+
+    </style>
 </head>
 <body>
-
+    <form action="/landing">
+        <p style="text-align:center;">Choose One of The Genres to Explore!</p>
+        <div class="grid-container">
+            
+            <div class="item2">
+            <input type="radio" name="genre" value="18"> Drama<br>
+            <input type="radio" name="genre" value="10751"> Family<br>
+            <input type="radio" name="genre" value="14"> Fantasy<br>  
+            <input type="radio" name="genre" value="36"> History<br>  
+            <input type="radio" name="genre" value="27"> Horror<br> </div>
+            <div class="item3">
+            <input type="radio" name="genre" value="10402"> Music<br>
+            <input type="radio" name="genre" value="9648"> Mystery<br>
+            <input type="radio" name="genre" value="10749"> Romance<br>
+            <input type="radio" name="genre" value="878"> Science Fiction<br>   </div>
+            <div class="item4">
+            <input type="radio" name="genre" value="10770"> TV Movie<br>
+            <input type="radio" name="genre" value="53"> Thriller<br>       
+            <input type="radio" name="genre" value="10752"> War<br>    
+            <input type="radio" name="genre" value="37"> Western<br>  </div>
+        </div>
+            <input type="submit" value="Explore!">
+    </form>
 </body>
 </html>
