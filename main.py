@@ -68,7 +68,7 @@ def getMovie(genre_id):
     param["api_key"] = movieDB_api_key
     param["sort_by"] = "popularity.desc"
     param["page"] = "1"
-    param["with_genres"] = genre_id
+    param["with_genres"] = str(genre_id)
     url = baseurl + "?" + urllib.urlencode(param)
     result = safeGet(url)
     if result is not None:
@@ -91,8 +91,8 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         genre_id = self.request.get('genre')
         vals = {}
-        movies = [Movie(getMovieInfo(t="The Lion King")), Movie(getMovieInfo(t="Frozen"))]
-        #[Movie(getMovieInfo(t=movie_title)) for movie_title in getMovie(genre_id=genre_id)]
+        #movies = [Movie(getMovieInfo(t="The Lion King")), Movie(getMovieInfo(t="Frozen"))]
+        movies = [Movie(getMovieInfo(t=movie_title)) for movie_title in getMovie(genre_id=genre_id)]
         vals["movies"] = movies
         template = JINJA_ENVIRONMENT.get_template('outputpage.html')
         self.response.write(template.render(vals))
