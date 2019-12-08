@@ -146,22 +146,48 @@ def getMovie(genre_id):
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         vals = {}
+        vals['page_title'] = "Moive Inspire Homepage"
         template = JINJA_ENVIRONMENT.get_template('landingpage.html')
         self.response.write(template.render(vals))
+
+    def post(self):
+        vals = {}
+        vals['page_title'] = "Movie Inspire!"
         genre_id = self.request.get('genre')
         go = self.request.get("gobtn")
+        logging.info(genre_id)
+        logging.info(go)
         if genre_id:
-            vals2 = {}
             movieList = getMovie(genre_id=genre_id)
             movies = []
             for movie in movieList:
                 movies.append(Movie(getMovieInfo(t=movie)))
             # movies = [Movie(getMovieInfo(t=title)) for title in getMovie(genre_id=genre_id)]
-            vals2["movies"] = movies
+            vals["movies"] = movies
             template = JINJA_ENVIRONMENT.get_template('outputpage.html')
-            self.response.write(template.render(vals2))
+            self.response.write(template.render(vals))
+            logging.info('genre= '+genre_id)
 
 
 
+# class MainHandler(webapp2.RequestHandler):
+#     def get(self):
+#         vals = {}
+#         template = JINJA_ENVIRONMENT.get_template('landingpage.html')
+#         self.response.write(template.render(vals))
+#         genre_id = self.request.get('genre')
+#         go = self.request.get("gobtn")
+#         if genre_id:
+#             vals2 = {}
+#             movieList = getMovie(genre_id=genre_id)
+#             movies = []
+#             for movie in movieList:
+#                 movies.append(Movie(getMovieInfo(t=movie)))
+#             # movies = [Movie(getMovieInfo(t=title)) for title in getMovie(genre_id=genre_id)]
+#             vals2["movies"] = movies
+#             template = JINJA_ENVIRONMENT.get_template('outputpage.html')
+#             self.response.write(template.render(vals2))
 
-application = webapp2.WSGIApplication([('/',MainHandler), ('/gresponse',MainHandler)], debug=True)
+
+application = webapp2.WSGIApplication([('/', MainHandler), ('/results', MainHandler)], debug=True)
+

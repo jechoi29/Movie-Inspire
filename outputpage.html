@@ -21,7 +21,7 @@
 
 <html>
 <head>
-	<title>Movie Inspire!</title>
+	<title>{{page_title}}</title>
 	<style>
         .title{grid-area: topp;}
         .info{grid-area: middlee;}
@@ -39,9 +39,39 @@
             font-size: 12px;
 			align-content: flex-start;
         }
+
+		.button {
+			background-color: #f44336; /* Red */
+			border: none;
+			color: white;
+			padding: 16px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 20px;
+			margin: 4px 2px;
+			width: 100%;
+			cursor: pointer;
+			border-radius: 12px;
+			-webkit-transition-duration: 0.4s; /* Hover Effect */
+			transition-duration: 0.4s;
+		}
+
+		.button:hover {
+			background-color: white;
+			color: black;
+			border: 2px solid #f44336;
+		}
+
     </style>
 </head>
 <body>
+	<button class="button" onclick="goBack() ">Search Another Genre</button>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
 	<table>
     {% for movie in movies %}
 		<tr>
