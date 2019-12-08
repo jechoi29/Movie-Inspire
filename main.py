@@ -62,13 +62,13 @@ class Movie():
         self.website = movie_dict['Website']
 
 ### Movie Database
-def getMovie(genreID):
+def getMovie(genre_id):
     baseurl = "https://api.themoviedb.org/3/discover/movie"
     param = {}
     param["api_key"] = movieDB_api_key
     param["sort_by"] = "popularity.desc"
     param["page"] = "1"
-    param["with_genres"] = genreID
+    param["with_genres"] = genre_id
     url = baseurl + "?" + urllib.urlencode(param)
     result = safeGet(url)
     if result is not None:
@@ -79,18 +79,30 @@ def getMovie(genreID):
             titleList.append(movie["title"])
         return titleList
 
+class LandingHandler(webapp2.RequestHandler):
+    def get(self):
+        vals = {}
+        template = JINJA_ENVIRONMENT.get_template('landingpage.html')
+        self.response.write(template.render(vals))
+
+
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),extensions=['jinja2.ext.autoescape'],autoescape=True)
+        genre_id = self.request.get('genre')
         vals = {}
-        movie = Movie(getMovieInfo(t="The Lion King"))
-        # vals = {"poster":movie.poster, "title":movie.title}
-        vals["movies"] = [Movie(getMovieInfo(t="The Lion King")), Movie(getMovieInfo(t="Frozen"))]
+        movies = [Movie(getMovieInfo(t="The Lion King")), Movie(getMovieInfo(t="Frozen"))]
+        #[Movie(getMovieInfo(t=movie_title)) for movie_title in getMovie(genre_id=genre_id)]
+        vals["movies"] = movies
         template = JINJA_ENVIRONMENT.get_template('outputpage.html')
         self.response.write(template.render(vals))
+
+        # vals = {}
+        # vals["movies"] = [Movie(getMovieInfo(t="The Lion King")), Movie(getMovieInfo(t="Frozen"))]
         # template = JINJA_ENVIRONMENT.get_template('landingpage.html')
         # self.response.write(template.render(vals))
-        # genreID = self.request.get('genre')
+
+
         # go = self.request.get("submitButton")
         # if genreID:
         #
@@ -100,4 +112,4 @@ class MainHandler(webapp2.RequestHandler):
         #     template = JINJA_ENVIRONMENT.get_template('template.html')
         #     self.response.write(template.render(templateValues))
 
-application = webapp2.WSGIApplication([('/',MainHandler),('/landing',MainHandler)], debug=True)
+application = webapp2.WSGIApplication([('/landing',LandingHandler),('/',MainHandler)], debug=True)
