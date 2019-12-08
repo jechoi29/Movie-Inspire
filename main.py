@@ -68,7 +68,7 @@ def getMovie(genre_id):
     param["api_key"] = movieDB_api_key
     param["sort_by"] = "popularity.desc"
     param["page"] = "1"
-    param["with_genres"] = str(genre_id)
+    param["with_genres"] = "35"
     url = baseurl + "?" + urllib.urlencode(param)
     result = safeGet(url)
     if result is not None:
@@ -79,37 +79,71 @@ def getMovie(genre_id):
             titleList.append(movie["title"])
         return titleList
 
-class LandingHandler(webapp2.RequestHandler):
-    def get(self):
-        vals = {}
-        template = JINJA_ENVIRONMENT.get_template('landingpage.html')
-        self.response.write(template.render(vals))
+# class LandingHandler(webapp2.RequestHandler):
+#     def get(self):
+#         vals = {}
+#         template = JINJA_ENVIRONMENT.get_template('landingpage.html')
+#         self.response.write(template.render(vals))
+#
+#
+#
+# class MainHandler(webapp2.RequestHandler):
+#     def get(self):p
+#         genre_id = self.request.get('genre')
+#         vals = {}
+#         #movies = [Movie(getMovieInfo(t="The Lion King")), Movie(getMovieInfo(t="Frozen"))]
+#         movies = [Movie(getMovieInfo(t=movie_title)) for movie_title in getMovie(genre_id=genre_id)]
+#         vals["movies"] = movies
+#         template = JINJA_ENVIRONMENT.get_template('outputpage.html')
+#         self.response.write(template.render(vals))
+#
+#         # vals = {}
+#         # vals["movies"] = [Movie(getMovieInfo(t="The Lion King")), Movie(getMovieInfo(t="Frozen"))]
+#         # template = JINJA_ENVIRONMENT.get_template('landingpage.html')
+#         # self.response.write(template.render(vals))
+#
+#
+#         # go = self.request.get("submitButton")
+#         # if genreID:
+#         #
+#         #     templateValues = {"message":"Top 5 Pugs Pictures by Views"}
+#         #
+#         #
+#         #     template = JINJA_ENVIRONMENT.get_template('template.html')
+#         #     self.response.write(template.render(templateValues))
 
-
+# class MainHandler(webapp2.RequestHandler):
+#     def get(self):
+#         vals = {}
+#         template = JINJA_ENVIRONMENT.get_template('landingpage.html')
+#         self.response.write(template.render(vals))
+#         genre_id = self.request.get('genre')
+#         go = self.request.get("submitButton")
+#         vals2 = {}
+#         movies = [Movie(getMovieInfo(t=movie_title)) for movie_title in getMovie(genre_id=genre_id)]
+#         vals2["movies"] = movies
+#         template = JINJA_ENVIRONMENT.get_template('outputpage.html')
+#         self.response.write(template.render(vals2))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        genre_id = self.request.get('genre')
         vals = {}
-        #movies = [Movie(getMovieInfo(t="The Lion King")), Movie(getMovieInfo(t="Frozen"))]
-        movies = [Movie(getMovieInfo(t=movie_title)) for movie_title in getMovie(genre_id=genre_id)]
-        vals["movies"] = movies
-        template = JINJA_ENVIRONMENT.get_template('outputpage.html')
+        template = JINJA_ENVIRONMENT.get_template('test.html')
         self.response.write(template.render(vals))
+        genre_id = self.request.get('username')
+        go = self.request.get("gobtn")
+        if genre_id:
+            vals2 = {}
+            movieList = getMovie(genre_id=genre_id)
+            movies = []
+            for movie in movieList:
+                movies.append(Movie(getMovieInfo(t=movie)))
+            # movies = [Movie(getMovieInfo(t=title)) for title in getMovie(genre_id=genre_id)]
+            vals2["movies"] = movies
+            template = JINJA_ENVIRONMENT.get_template('outputpage.html')
+            self.response.write(template.render(vals2))
 
-        # vals = {}
-        # vals["movies"] = [Movie(getMovieInfo(t="The Lion King")), Movie(getMovieInfo(t="Frozen"))]
-        # template = JINJA_ENVIRONMENT.get_template('landingpage.html')
-        # self.response.write(template.render(vals))
 
 
-        # go = self.request.get("submitButton")
-        # if genreID:
-        #
-        #     templateValues = {"message":"Top 5 Pugs Pictures by Views"}
-        #
-        #
-        #     template = JINJA_ENVIRONMENT.get_template('template.html')
-        #     self.response.write(template.render(templateValues))
 
-application = webapp2.WSGIApplication([('/landing',LandingHandler),('/',MainHandler)], debug=True)
+application = webapp2.WSGIApplication([('/',MainHandler), ('/gresponse',MainHandler)], debug=True)
