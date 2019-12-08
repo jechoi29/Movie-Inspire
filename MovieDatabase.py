@@ -35,7 +35,7 @@ def getGenreList():
 
 ### send in the ID and return a list of top 5 rated movie title
 def getMovie(genreID):
-    baseurl = "https://api.themoviedb.org/3/discover/movie"
+    baseurl = "http://api.themoviedb.org/3/discover/movie"
     param = {}
     param["api_key"] = movieDB_api_key
     param["sort_by"] = "popularity.desc"
@@ -58,4 +58,5 @@ def converter(genre):
     return getMovie(genreID=genreID)
 
 ### Simulation of user input
-print(converter(genre="romance"))
+# print(converter(genre="romance"))
+print(getMovie(genreID=35))
