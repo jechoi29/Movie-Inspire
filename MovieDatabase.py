@@ -59,4 +59,5 @@ def converter(genre):
 
 ### Simulation of user input
 # print(converter(genre="romance"))
-print(getMovie(genreID=35))
+# print(getMovie(genreID=35))
+print(pretty(getGenreList()))

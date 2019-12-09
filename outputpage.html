@@ -1,45 +1,7 @@
-
-
-<!--<html>-->
-<!--<head>-->
-<!--	<title>Movie Inspire!</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--	<table>-->
-<!--    {% for movie in movies %}-->
-<!--		<tr>-->
-<!--			<th>-->
-<!--				-->
-<!--				<img src="{{movie.poster}}" alt="{{movie.title}}"/>-->
-<!--				-->
-<!--			</th>-->
-<!--		</tr>-->
-<!--	{% endfor %}-->
-<!--	</table>-->
-<!--</body>-->
-<!--</html>-->
-
 <html>
 <head>
 	<title>{{page_title}}</title>
 	<style>
-        .title{grid-area: topp;}
-        .info{grid-area: middlee;}
-        .description{grid-area: bottomm;}
-
-        .grid-container {
-            display: grid;
-            grid-template-areas:
-                'topp'
-				'middlee'
-				'bottomm'
-        }
-
-        .grid-container > div {
-            font-size: 12px;
-			align-content: flex-start;
-        }
-
 		.button {
 			background-color: #f44336; /* Red */
 			border: none;
@@ -63,6 +25,18 @@
 			border: 2px solid #f44336;
 		}
 
+		table {font-family: sans-serif}
+
+		h3 {
+  			display: block;
+  			font-size: 1.17em;
+  			margin-top: 1em;
+  			margin-bottom: 1em;
+			margin-left: 0;
+  			margin-right: 0;
+  			font-weight: normal;
+			}
+
     </style>
 </head>
 <body>
@@ -72,22 +46,24 @@
 			window.history.back();
 		}
 	</script>
-	<table>
+<div align="center">
+	<table width="1000"; cellspacing="20">
     {% for movie in movies %}
 		<tr>
 			<th>
 				<img src="{{movie.poster}}" alt="{{movie.title}}"/>
 			</th>
 			<th>
-				<div class="grid-container">
-					<div class="topp"><h1>{{movie.title}}</h1></div>
-					<div class="middlee"><h1>{{movie.year}}</h1></div>
-					<div class="bottomm"><h1>{{movie.plot}}</h1></div>
-				</div>
+				<th align="left" valign="top">
+					<h1>{{movie.title}}</h1>
+					<h3>Year Released: {{movie.year}}<br>Cast: {{movie.actors}}</h3>
+					<h3>Plot: <br>{{movie.plot}}</h3>
+				</th>
 			</th>
 		</tr>
 	{% endfor %}
 	</table>
+</div>
 </body>
 </html>
 
