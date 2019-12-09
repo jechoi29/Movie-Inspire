@@ -12,12 +12,12 @@
 			display: inline-block;
 			font-size: 20px;
 			margin: 4px 2px;
-			width: 500px;
+			width: 1000px;
 			align: center;
 			cursor: pointer;
 			border-radius: 12px;
 			-webkit-transition-duration: 0.4s; /* Hover Effect */
-			transition-duration: 0.4s;
+			transition-duration: 0.3s;
 		}
 
 		.button:hover {
@@ -50,6 +50,8 @@
     </style>
 </head>
 <body style="background-color: black;">
+	<div align="center">
+		<br>
 	<button class="button" onclick="goBack() ">Search Another Genre</button>
 	<br>
 	<br>
@@ -59,6 +61,7 @@
 			window.history.back();
 		}
 	</script>
+	</div>
 <div align="center">
 	<table width="1000"; cellspacing="20" style="background-color: white;">
     {% for movie in movies %}

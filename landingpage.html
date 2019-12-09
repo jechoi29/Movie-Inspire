@@ -4,43 +4,89 @@
     <meta charset="UTF-8">
     <title>{{page_title}}</title>
     <style>
-        .item2{grid-area: leftC;}
-        .item3{grid-area: middleC;}
-        .item4{grid-area: rightC;}
+        .item2{grid-area: leftC; width: 200px}
+        .item3{grid-area: middleC;width: 200px}
+        .item4{grid-area: rightC;width: 200px}
+
+        h1 {
+            color:white;
+        }
 
         .grid-container {
             display: grid;
             grid-template-areas:
-                'leftC middleC rightC'
+                'leftC middleC rightC';
+        }
+
+        body {
+            font-family: sans-serif
         }
 
         .grid-container > div {
             font-size: 20px;
+            color: white;
         }
+
+        .submit {
+            background-color: #f44336;
+            border: none;
+			color: white;
+			padding: 16px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 20px;
+			margin: 4px 2px;
+			width: 500px;
+			align: center;
+			cursor: pointer;
+			border-radius: 12px;
+			-webkit-transition-duration: 0.4s; /* Hover Effect */
+			transition-duration: 0.3s;
+        }
+
+        .submit:hover {
+			background-color: white;
+			color: black;
+			border: 2px solid #f44336;
+		}
+
+        /*.form {*/
+        /*    left: 50px;*/
+        /*}*/
+
 
     </style>
 </head>
-<body align = "center">
-    <form action="results" method="post">
-        <p>Choose One of The Genres to Explore!</p>
+<body bgcolor="000000">
+    <form class="form" action="results" method="post">
+<!--        <form action="results" method="post" align = "center">-->
+        <div style="width:600px; margin:0 auto;">
+            <h1><br><br><br><br></h1>
+        <h1 align="center">Choose One of The Genres to Explore!</h1>
+        <h1><br></h1>
         <div class="grid-container">
-            <div class="item2">
-            <input type="radio" name="genre" value="18"> Drama<br>
-            <input type="radio" name="genre" value="10751"> Family<br>
-            <input type="radio" name="genre" value="14"> Fantasy<br>  
-            <input type="radio" name="genre" value="36"> History<br> </div>
-            <div class="item3">
-            <input type="radio" name="genre" value="10402"> Music<br>
-            <input type="radio" name="genre" value="9648"> Mystery<br>
-            <input type="radio" name="genre" value="10749"> Romance<br>
-            <input type="radio" name="genre" value="878"> Science Fiction<br>   </div>
-            <div class="item4">
-            <input type="radio" name="genre" value="10770"> TV Movie<br>
-            <input type="radio" name="genre" value="27"> Horror<br>
-            <input type="radio" name="genre" value="10752"> War<br>    
-            <input type="radio" name="genre" value="37"> Western<br>  </div>
+            <div class="item2" align="left">
+                <input type="radio" name="genre" value="18" checked> Drama<br><br>
+                <input type="radio" name="genre" value="10751"> Family<br><br>
+                <input type="radio" name="genre" value="14"> Fantasy<br><br>
+                <input type="radio" name="genre" value="36"> History<br> </div>
+            <div class="item3" align="left">
+                <input type="radio" name="genre" value="10402"> Music<br><br>
+                <input type="radio" name="genre" value="9648"> Mystery<br><br>
+                <input type="radio" name="genre" value="10749"> Romance<br><br>
+                <input type="radio" name="genre" value="878"> Science Fiction<br>   </div>
+            <div class="item4" align="left">
+                <input type="radio" name="genre" value="10770"> TV Movie<br><br>
+                <input type="radio" name="genre" value="27"> Horror<br><br>
+                <input type="radio" name="genre" value="10752"> War<br><br>
+                <input type="radio" name="genre" value="37"> Western<br>  </div>
+            <h1><br></h1>
         </div>
-        <input type="submit" value="Explore!" name="gobtn"/>
+        <div align="center">
+        <input class="submit" type="submit" value="Explore!" name="gobtn"/>
+        </div>
+        </div>
     </form>
 </body>
 </html>
