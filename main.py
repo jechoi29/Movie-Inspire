@@ -36,6 +36,7 @@ def getMovieInfo(t=movie_title):
     result = safeGet(omdbrequest)
     if result is not None:
         movieinfo_data = json.load(result)
+
         return movieinfo_data
     else:
         return "Sorry, couldn't retrieve the movie information."
@@ -58,8 +59,9 @@ class Movie():
         self.imdb_rating = movie_dict['imdbRating']
         self.imdb_votes = movie_dict['imdbVotes']
         self.imdbID = movie_dict['imdbID']
-        self.box_office = movie_dict['BoxOffice']
-        self.website = movie_dict['Website']
+        # self.box_office = movie_dict['BoxOffice']
+        # self.website = movie_dict['Website']
+
 
 ### Movie Database
 def getMovie(genre_id):
@@ -73,7 +75,8 @@ def getMovie(genre_id):
     result = safeGet(url)
     if result is not None:
         movieData = json.load(result)
-        sortedList = sorted(movieData["results"], key=lambda x:x["vote_average"], reverse=True)[0:5]
+        sortedList = movieData["results"][0:5]
+        # sortedList = sorted(movieData["results"], key=lambda x:x["vote_average"], reverse=True)[0:5]
         titleList = []
         for movie in sortedList:
             titleList.append(movie["title"])
@@ -161,7 +164,8 @@ class MainHandler(webapp2.RequestHandler):
             movieList = getMovie(genre_id=genre_id)
             movies = []
             for movie in movieList:
-                movies.append(Movie(getMovieInfo(t=movie)))
+                if "Error" not in getMovieInfo(t=movie):
+                    movies.append(Movie(getMovieInfo(t=movie)))
             # movies = [Movie(getMovieInfo(t=title)) for title in getMovie(genre_id=genre_id)]
             vals["movies"] = movies
             template = JINJA_ENVIRONMENT.get_template('outputpage.html')
