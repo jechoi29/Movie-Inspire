@@ -71,8 +71,8 @@ class Movie():
         self.poster = movie_dict['Poster']
         self.imdb_rating = movie_dict['imdbRating']
         self.imdb_votes = movie_dict['imdbVotes']
-        imdb_id = movie_dict['imdbID']
-        self.imdb_link = "https://www.imdb.com/title/" + imdb_id + "/"
+        self.imdb_id = movie_dict['imdbID']
+        self.imdb_link = "https://www.imdb.com/title/" + self.imdb_id + "/"
 
 
 # Define a class for the web application
