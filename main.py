@@ -62,20 +62,18 @@ def getMovieInfo(t="The Lion King"):
 class Movie():
     def __init__(self, movie_dict):
         self.title = movie_dict['Title']
-        self.year = movie_dict['Year']
         self.rated = movie_dict['Rated']
-        self.released = movie_dict['Released']
-        self.runtime = movie_dict['Director']
-        self.writer = movie_dict['Writer']
+        self.year = movie_dict['Year']
+        self.runtime = movie_dict['Runtime']
+        self.director = movie_dict['Director']
         self.actors = movie_dict['Actors']
         self.plot = movie_dict['Plot']
         self.poster = movie_dict['Poster']
-        self.metascore = movie_dict['Metascore']
         self.imdb_rating = movie_dict['imdbRating']
         self.imdb_votes = movie_dict['imdbVotes']
-        self.imdbID = movie_dict['imdbID']
-        self.box_office = movie_dict['BoxOffice']
-        self.website = movie_dict['Website']
+        imdb_id = movie_dict['imdbID']
+        self.imdb_link = "https://www.imdb.com/title/" + imdb_id + "/"
+
 
 # Define a class for the web application
 class MainHandler(webapp2.RequestHandler):
