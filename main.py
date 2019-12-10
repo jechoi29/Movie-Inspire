@@ -7,21 +7,24 @@ JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.di
                                        extensions=['jinja2.ext.autoescape'],
                                        autoescape=True)
 
+
 def pretty(obj):
     return json.dumps(obj, sort_keys=True, indent=2)
+
 
 # Handle any errors due to HTTP or connection related exceptions
 def safeGet(url):
     try:
         return urllib2.urlopen(url)
     except urllib2.HTTPError as e:
-        if hasattr(e,"code"):
+        if hasattr(e, "code"):
             logging.error("The server couldn't fulfill the request.")
             logging.error("Error code: ", e.code)
-        elif hasattr(e,'reason'):
+        elif hasattr(e, 'reason'):
             logging.error("We failed to reach a server")
             logging.error("Reason: ", e.reason)
         return None
+
 
 # Return a list of movie titles from the Movie Database API call
 def getMovie(genre_id):
@@ -42,6 +45,7 @@ def getMovie(genre_id):
             titleList.append(movie["title"])
         return titleList
 
+
 # Return a dictionary with movie info data from the OMDb API call
 def getMovieInfo(t="The Lion King"):
     base_url = 'http://www.omdbapi.com/'
@@ -57,6 +61,7 @@ def getMovieInfo(t="The Lion King"):
         return movieinfo_data
     else:
         return "Sorry, couldn't retrieve the movie information."
+
 
 # Define a movie class to get relevant, useful information about a movie
 class Movie():
@@ -100,6 +105,7 @@ class MainHandler(webapp2.RequestHandler):
             vals["movies"] = movies
             template = JINJA_ENVIRONMENT.get_template('outputpage.html')
             self.response.write(template.render(vals))
-            logging.info('genre= '+genre_id)
+            logging.info('genre= ' + genre_id)
+
 
 application = webapp2.WSGIApplication([('/', MainHandler), ('/results', MainHandler)], debug=True)
