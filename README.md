@@ -2,7 +2,7 @@
 Project created by Jung Eun Choi and Sharon Wong.
 
 The Movie Inspire Application is a quick movie search web application to inspire users on what movie to watch based on movie genre preferences. It is an all-in-one platform where users do not need to search the web for additional information about the movies. We chose to build a web application because it can be accessed through users’ desktop or mobile devices and it is where people generally go to when searching for movies.
-- [Click here to explore the Movie Inspire webapp](movie-inspire.appspot.com)
+- [Click here to explore the Movie Inspire webapp](https://movie-inspire.appspot.com/)
 
 ## Project Proposal
 - [Link to Movie Inspire Project Proposal](https://docs.google.com/document/d/1LRcR8rvo1qH_PLvQJLMm-YXmiQ6UftWo_TWIjkjDOLI/edit?usp=sharing)
