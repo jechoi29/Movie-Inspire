@@ -3,13 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>{{page_title}}</title>
+    <link href="https://fonts.googleapis.com/css?family=Sulphur+Point&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
+
     <style>
         .item2{grid-area: leftC; width: 200px}
         .item3{grid-area: middleC;width: 200px}
         .item4{grid-area: rightC;width: 200px}
 
+
         h1 {
+            font-size: 60px;
             color:white;
+            font-family: 'Rock Salt', cursive;
+            /*font-family: 'Leckerli One', cursive;*/
+            /*font-family: 'Sedgwick Ave Display', cursive;*/
+            /*font-family: 'Pacifico', cursive;*/
+            /*font-family: 'Satisfy', cursive;*/
+        }
+
+        h2 {
+            color:white;
+            font-family: 'Sulphur Point', sans-serif;
         }
 
         .grid-container {
@@ -19,7 +38,7 @@
         }
 
         body {
-            font-family: sans-serif
+            font-family: 'Sulphur Point', sans-serif;
         }
 
         .grid-container > div {
@@ -43,12 +62,14 @@
 			border-radius: 12px;
 			-webkit-transition-duration: 0.4s; /* Hover Effect */
 			transition-duration: 0.3s;
+            font-family: 'Sulphur Point', sans-serif;
         }
 
         .submit:hover {
 			background-color: white;
 			color: black;
 			border: 2px solid #f44336;
+            font-family: 'Sulphur Point', sans-serif;
 		}
 
         /*.form {*/
@@ -59,12 +80,17 @@
     </style>
 </head>
 <body bgcolor="000000">
+    <img src="logosmaller-01.png" alt="Movie Inspire" align="middle">
     <form class="form" action="results" method="post">
 <!--        <form action="results" method="post" align = "center">-->
         <div style="width:600px; margin:0 auto;">
-            <h1><br><br><br><br></h1>
-        <h1 align="center">Choose One of The Genres to Explore!</h1>
-        <h1><br></h1>
+            <h2><br></h2>
+            <h1 align = "center">Movie Inspire</h1>
+            <h2 align="center">Do you want any movie inspirations?<br><br> Choose one genre to explore:</h2>
+<!--        <h5><br></h5>-->
+
+<!--        <h2 align="center">Choose one genre to explore!</h2>-->
+<!--        <h6><br></h6>-->
         <div class="grid-container">
             <div class="item2" align="left">
                 <input type="radio" name="genre" value="18" checked> Drama<br><br>
@@ -81,7 +107,7 @@
                 <input type="radio" name="genre" value="27"> Horror<br><br>
                 <input type="radio" name="genre" value="10752"> War<br><br>
                 <input type="radio" name="genre" value="37"> Western<br>  </div>
-            <h1><br></h1>
+            <h2><br></h2>
         </div>
         <div align="center">
         <input class="submit" type="submit" value="Explore!" name="gobtn"/>
