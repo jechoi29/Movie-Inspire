@@ -13,6 +13,7 @@ Movie Inspire is a quick movie search web application to inspire users on movies
 - [The Movie Database Resource Writeup](https://docs.google.com/document/d/1Qcqx9h6I_AR5YN8bEBRaChqS6wONNnUADE-qxZhExWQ/edit)
 
 ### API Key Authentication
+API Keys are not provided in this repository (api_key.py is ignored).
 - OMDb API Key - users can easily generate an API key by entering their account type (indicating whether they are a patron or not) and email. Click the "API Key" link from the top navigation bar of the homepage.
   - [Link to OMDb's website](http://www.omdbapi.com/)
 - The Movie Database API Key - users can apply for an API key, once creating an account. Click the "API" link from the left hand sidebar within account settings page. Required fields are business name, address, phone number and description to apply for an API key.
